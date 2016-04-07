@@ -15,12 +15,12 @@
     }
   ],
   "bugs": {
-    "web": "https://github.com/LionsMouthDigital/vue-hex-tabs/issues"
+    "web": "https://github.com/LionsMouthDigital/vue-hex-chart/issues"
   },
   "repository": [
     {
       "type": "git",
-      "url": "https://github.com/LionsMouthDigital/vue-hex-tabs.git"
+      "url": "https://github.com/LionsMouthDigital/vue-hex-chart.git"
     }
   ],
   "license": "CC-BY-SA-4.0",
