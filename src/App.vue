@@ -50,12 +50,7 @@
 </template>
 
 <script>
-  import HexBarChart       from './components/HexBarChart.vue';
-  import HexDoughnutChart  from './components/HexDoughnutChart.vue';
-  import HexLineChart      from './components/HexLineChart.vue';
-  import HexPieChart       from './components/HexPieChart.vue';
-  import HexPolarAreaChart from './components/HexPolarAreaChart.vue';
-  import HexRadarChart     from './components/HexRadarChart.vue';
+  import HexChart from './Component.vue';
 
   export default {
     // TODO Figure out a way to store JSON data in here.
@@ -70,12 +65,12 @@
     },
 
     components: {
-      HexBarChart,
-      HexDoughnutChart,
-      HexLineChart,
-      HexPolarAreaChart,
-      HexPieChart,
-      HexRadarChart,
+      HexBarChart:       HexChart.HexBarChart,
+      HexDoughnutChart:  HexChart.HexDoughnutChart,
+      HexLineChart:      HexChart.HexLineChart,
+      HexPolarAreaChart: HexChart.HexPolarAreaChart,
+      HexPieChart:       HexChart.HexPieChart,
+      HexRadarChart:     HexChart.HexRadarChart,
     }
   }
 </script>

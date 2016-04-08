@@ -1,6 +1,7 @@
 {
   "name": "vue-hex-chart",
   "description": "A Vue component for charts in the Hex Framework from LionsMouth Digital.",
+  "main": "src/Component.vue",
   "author": "Curtis Blackwell <blackwell.curtis@gmail.com>",
   "maintainers": [
     {
@@ -29,8 +30,9 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^1.0.0",
-    "babel-runtime": "^5.8.0"
+    "babel-runtime": "^5.8.0",
+    "chart.js": "^1.1.1",
+    "vue": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
