@@ -1,13 +1,3 @@
-<style>
-  [class*=-legend] span {
-    display: inline-block;
-    height: 10px;
-    margin-right: 10px;
-    width: 10px;
-  }
-</style>
-
-
 <template>
   <div>
     <canvas
