@@ -1,6 +1,9 @@
 # vue-hex-chart
 
-> A Vue.js project
+> A Vue component for charts in the Hex Framework.
+
+See [Hex](https://github.com/LionsMouthDigital/Hex#using-hex-vue-components-wo-the-hex-framework)
+for usage and more information.
 
 ## Build Setup
 

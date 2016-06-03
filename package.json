@@ -1,7 +1,28 @@
 {
   "name": "vue-hex-chart",
-  "description": "A Vue.js project",
+  "description": "A Vue component for charts in the Hex Framework from LionsMouth Digital.",
   "author": "Curtis Blackwell <blackwell.curtis@gmail.com>",
+  "maintainers": [
+    {
+      "name": "Curtis Blackwell",
+      "email": "curtis@lionsmouth.digital",
+      "web": "http://lionsmouth.digital"
+    },
+    {
+      "name": "James Blair",
+      "email": "james@lionsmouth.digital",
+      "web": "http://lionsmouth.digital"
+    }
+  ],
+  "bugs": {
+    "web": "https://github.com/LionsMouthDigital/Hex/issues"
+  },
+  "repository": [
+    {
+      "type": "git",
+      "url": "https://github.com/LionsMouthDigital/vue-hex-chart.git"
+    }
+  ],
   "scripts": {
     "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js",
     "serve": "http-server -c 1 -a localhost",
@@ -16,6 +37,7 @@
       "babelify"
     ]
   },
+
   "dependencies": {
     "chart.js": "^1.1.1",
     "vue": "^1.0.0"
