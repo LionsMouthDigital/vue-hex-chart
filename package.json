@@ -46,5 +46,6 @@
     "vueify": "^8.5.2",
     "watchify": "^3.4.0"
   },
-  "main": "src/components/_HexChart.vue"
+  "main": "src/components/_HexChart.vue",
+  "version": "1.0.0-beta.6"
 }
