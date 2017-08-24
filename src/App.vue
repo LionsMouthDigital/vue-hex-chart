@@ -1,83 +1,217 @@
 <template>
   <div id="app">
-    <h1>Hex Chart</h1>
-    <p>
-      If you wanna show legends, make sure you add some styles for them. Here's a sample that would
-      take care of all chart types:
-    </p>
+    <hex-chart :config="{
+      type: 'line',
+      data: cogs,
+    }"></hex-chart>
 
-    <pre><code>&lt;style&gt;
-      [class*=-legend] span {
-        display:      inline-block;
-        height:       10px;
-        margin-right: 10px;
-        width:        10px;
-      }
-      &lt;/style&gt;
-    </code></pre>
+    <hex-chart :config="{
+      type: 'bar',
+      data: cogs,
+    }"></hex-chart>
 
-    <h2>Bar chart</h2>
-    <hex-bar-chart
-    json='{"labels":["Jan","Feb","Mar","Apr"],"datasets":[{"label":"Jack","fillColor":"rgba(30,122,43, .5)","strokeColor":"rgba(30,122,43, 0)","highlightFill":"rgba(30,122,43, 1","highlightStroke":"rgba(30,122,43, 0)","data":[30,122,43,321]},{"label":"Bill","fillColor":"rgba(231,51,13, .5)","strokeColor":"rgba(231,51,13, 0)","highlightFill":"rgba(231,51,13, 1","highlightStroke":"rgba(231,51,13, 0)","data":[231,51,13,752]},{"label":"Janet","fillColor":"rgba(454,59,785, .5)","strokeColor":"rgba(454,59,785, 0)","highlightFill":"rgba(454,59,785, 1","highlightStroke":"rgba(454,59,785, 0)","data":[454,59,785,56]},{"label":"Erin","fillColor":"rgba(245,201,12, .5)","strokeColor":"rgba(245,201,12, 0)","highlightFill":"rgba(245,201,12, 1","highlightStroke":"rgba(245,201,12, 0)","data":[245,201,12,124]}]}'
-    ></hex-bar-chart>
+    <hex-chart :config="{
+      type: 'radar',
+      data: cogs,
+    }"></hex-chart>
 
-    <h2>Line chart with specified dimensions</h2>
-    <hex-line-chart
-    :width  = "800"
-    :height = "500"
-    json    = '{"labels":["Jan","Feb","Mar","Apr"],"datasets":[{"label":"Jack","fillColor":"rgba(30,122,43, .1)","strokeColor":"rgba(30,122,43, .5)","pointColor":"rgba(30,122,43, 1)","pointStrokeColor":"#fff","pointHighlightFill":"#fff","pointHighlightStroke":"rgba(30,122,43, 1)","data":[30,122,43,321]},{"label":"Bill","fillColor":"rgba(231,51,13, .1)","strokeColor":"rgba(231,51,13, .5)","pointColor":"rgba(231,51,13, 1)","pointStrokeColor":"#fff","pointHighlightFill":"#fff","pointHighlightStroke":"rgba(231,51,13, 1)","data":[231,51,13,752]},{"label":"Janet","fillColor":"rgba(454,59,785, .1)","strokeColor":"rgba(454,59,785, .5)","pointColor":"rgba(454,59,785, 1)","pointStrokeColor":"#fff","pointHighlightFill":"#fff","pointHighlightStroke":"rgba(454,59,785, 1)","data":[454,59,785,56]},{"label":"Erin","fillColor":"rgba(245,201,12, .1)","strokeColor":"rgba(245,201,12, .5)","pointColor":"rgba(245,201,12, 1)","pointStrokeColor":"#fff","pointHighlightFill":"#fff","pointHighlightStroke":"rgba(245,201,12, 1)","data":[245,201,12,124]}]}'
-    ></hex-line-chart>
+    <hex-chart :config="{
+      type: 'doughnut',
+      data: cogs,
+    }"></hex-chart>
 
-    <h2>Pie and doughnut charts</h2>
-    <hex-pie-chart
-    json='[{"value":516,"color":"rgba(30,122,43, .5)","highlight":"rgba(30,122,43, 1)","label":"Jack"},{"value":1047,"color":"rgba(231,51,13, .5)","highlight":"rgba(231,51,13, 1)","label":"Bill"},{"value":1354,"color":"rgba(454,59,785, .5)","highlight":"rgba(454,59,785, 1)","label":"Janet"},{"value":582,"color":"rgba(245,201,12, .5)","highlight":"rgba(245,201,12, 1)","label":"Erin"}]'
-    ></hex-pie-chart>
+    <hex-chart :config="{
+      type: 'pie',
+      data: cogs,
+    }"></hex-chart>
 
-    <hex-doughnut-chart
-    json='[{"value":516,"color":"rgba(30,122,43, .5)","highlight":"rgba(30,122,43, 1)","label":"Jack"},{"value":1047,"color":"rgba(231,51,13, .5)","highlight":"rgba(231,51,13, 1)","label":"Bill"},{"value":1354,"color":"rgba(454,59,785, .5)","highlight":"rgba(454,59,785, 1)","label":"Janet"},{"value":582,"color":"rgba(245,201,12, .5)","highlight":"rgba(245,201,12, 1)","label":"Erin"}]'
-    ></hex-doughnut-chart>
+    <hex-chart :config="{
+      type: 'polarArea',
+      data: cogs,
+    }"></hex-chart>
 
-    <h2>Polar area chart</h2>
-    <hex-polar-area-chart
-    json='[{"value":516,"color":"rgba(30,122,43, .5)","highlight":"rgba(30,122,43, 1)","label":"Jack"},{"value":1047,"color":"rgba(231,51,13, .5)","highlight":"rgba(231,51,13, 1)","label":"Bill"},{"value":1354,"color":"rgba(454,59,785, .5)","highlight":"rgba(454,59,785, 1)","label":"Janet"},{"value":582,"color":"rgba(245,201,12, .5)","highlight":"rgba(245,201,12, 1)","label":"Erin"}]'
-    ></hex-polar-area-chart>
+    <hex-chart :config="{
+      type: 'bubble',
+      data: scatter,
+    }"></hex-chart>
 
-    <h2>Radar chart</h2>
-    <hex-radar-chart
-    json='{"labels":["Jan","Feb","Mar","Apr"],"datasets":[{"label":"Jack","fillColor":"rgba(30,122,43, .1)","strokeColor":"rgba(30,122,43, .5)","highlightFill":"#fff","highlightStroke":"rgba(30,122,43, 1)","data":[30,122,43,321]},{"label":"Bill","fillColor":"rgba(231,51,13, .1)","strokeColor":"rgba(231,51,13, .5)","highlightFill":"#fff","highlightStroke":"rgba(231,51,13, 1)","data":[231,51,13,752]},{"label":"Janet","fillColor":"rgba(454,59,785, .1)","strokeColor":"rgba(454,59,785, .5)","highlightFill":"#fff","highlightStroke":"rgba(454,59,785, 1)","data":[454,59,785,56]},{"label":"Erin","fillColor":"rgba(245,201,12, .1)","strokeColor":"rgba(245,201,12, .5)","highlightFill":"#fff","highlightStroke":"rgba(245,201,12, 1)","data":[245,201,12,124]}]}'
-    ></hex-radar-chart>
+    <hex-chart :config="{
+      type: 'scatter',
+      data: scatter,
+    }"></hex-chart>
   </div>
 </template>
 
-<script>
-import HexBarChart       from './components/HexBarChart.vue';
-import HexDoughnutChart  from './components/HexDoughnutChart.vue';
-import HexLineChart      from './components/HexLineChart.vue';
-import HexPieChart       from './components/HexPieChart.vue';
-import HexPolarAreaChart from './components/HexPolarAreaChart.vue';
-import HexRadarChart     from './components/HexRadarChart.vue';
 
-export default {
-  components: {
-    HexBarChart,
-    HexDoughnutChart,
-    HexLineChart,
-    HexPieChart,
-    HexPolarAreaChart,
-    HexRadarChart,
+
+
+
+<script>
+  import Chart from 'chart.js';
+  import HexChart from './components/HexChart.vue';
+
+  const defaults = {
+    animation: {
+      duration: 750,
+      easing: 'easeInOutQuart',
+    },
+    tooltips: {
+      intersect: false,
+      mode:      'index',
+    },
+    title: {
+      display: true,
+      text:    'COGS',
+    },
+  };
+
+  for (var prop in defaults) {
+    Chart.defaults.global[prop] = Object.assign(Chart.defaults.global[prop], defaults[prop]);
   }
-}
+
+  export default {
+    name: 'app',
+
+    components: {
+      HexChart
+    },
+
+    data() {
+      return {
+        cogs: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          datasets: [
+            {
+              label:           'Earrings',
+              backgroundColor: 'rgba(255, 99, 132, .3)',
+              borderColor:     'rgb(255, 99, 132)',
+              data:            [5.5, 10, 5, 2, 20, 30, 45],
+            },
+            {
+              label:           'Pouches',
+              backgroundColor: 'rgba(99, 255, 132, .3)',
+              borderColor:     'rgb(99, 255, 132)',
+              data:            [10, 4, 50, 45, 30, 10, 45],
+            },
+          ],
+        },
+
+        scatter: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          datasets: [
+            {
+              label:           'Earrings',
+              backgroundColor: 'rgba(255, 99, 132, .3)',
+              borderColor:     'rgb(255, 99, 132)',
+              data: [
+                {
+                  x: 5.5,
+                  y: 1,
+                  r: 10,
+                },
+                {
+                  x: 10,
+                  y: 6,
+                  r: 8,
+                },
+                {
+                  x: 5,
+                  y: 8,
+                  r: 13,
+                },
+                {
+                  x: 2,
+                  y: 45,
+                  r: 33,
+                },
+                {
+                  x: 20,
+                  y: 54,
+                  r: 14,
+                },
+                {
+                  x: 30,
+                  y: 2,
+                  r: 43,
+                },
+                {
+                  x: 45,
+                  y: 54,
+                  r: 45,
+                },
+              ],
+            },
+            {
+              label:           'Pouches',
+              backgroundColor: 'rgba(99, 255, 132, .3)',
+              borderColor:     'rgb(99, 255, 132)',
+              data: [
+                {
+                  x: 1,
+                  y: 4,
+                  r: 40,
+                },
+                {
+                  x: 6,
+                  y: 54,
+                  r: 35,
+                },
+                {
+                  x: 8,
+                  y: 25,
+                  r: 7,
+                },
+                {
+                  x: 45,
+                  y: 8,
+                  r: 9,
+                },
+                {
+                  x: 54,
+                  y: 78,
+                  r: 10,
+                },
+                {
+                  x: 2,
+                  y: 78,
+                  r: 15,
+                },
+                {
+                  x: 54,
+                  y: 5,
+                  r: 24,
+                },
+              ],
+            },
+          ],
+        }
+      };
+    },
+  }
 </script>
+
+
+
 
 <style>
   body {
-    font-family: Helvetica, sans-serif;
+    margin: 0;
   }
 
-  [class*=-legend] span {
-    display:      inline-block;
-    height:       10px;
-    margin-right: 10px;
-    width:        10px;
+  #app {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2.5vw;
+    width: 95vw;
+  }
+
+  div {
+    position: relative;
+    width: 35vw;
+  }
+
+  div:nth-child(n+3) {
+    margin-top: 100px;
   }
 </style>

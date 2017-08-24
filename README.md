@@ -1,9 +1,6 @@
 # vue-hex-chart
 
-> A Vue component for charts in the Hex Framework.
-
-See [Hex](https://github.com/LionsMouthDigital/Hex#using-hex-vue-components-wo-the-hex-framework)
-for usage and more information.
+> A Vue.js project
 
 ## Build Setup
 
@@ -25,3 +22,31 @@ npm test
 ```
 
 For more information see the [docs for vueify](https://github.com/vuejs/vueify).
+
+
+---
+
+
+## Setting global config
+To set your own Chart.js global config, do something like this:
+
+```js
+import Vue      from 'vue';
+import HexChart from 'vue-hex-chart';
+import Chart    from 'chart.js';
+
+const defaults = {
+  animation: {
+    duration: 750,
+    easing: 'easeInOutQuart',
+  },
+  tooltips: {
+    intersect: false,
+    mode:      'index',
+  },
+};
+
+for (var prop in defaults) {
+  Chart.defaults.global[prop] = Object.assign(Chart.defaults.global[prop], defaults[prop]);
+}
+```

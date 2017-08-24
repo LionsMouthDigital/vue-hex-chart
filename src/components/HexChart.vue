@@ -1,89 +1,84 @@
 <template>
   <div>
-    <canvas
-      class  = "chart"
-      width  = "{{ dimensions.width }}"
-      height = "{{ dimensions.height }}"
-      v-el:canvas
-    ></canvas>
-    <div class="chart-legend" v-el:legend v-show="legend">{{{ legend }}}</div>
+    <canvas></canvas>
   </div>
 </template>
 
+
+
+
 <script>
-  import Vue   from 'vue';
   import Chart from 'chart.js';
 
-  export default Vue.extend({
-    props: {
-      json:   String,
-      height: Number,
-      width:  Number,
-    },
+  export default {
+    name: 'HexChart',
 
-    data() {
-      return {
-        chartData: this.json ? JSON.parse(this.json) : [],
-        legend:    {},
+
+
+
+    props: {
+      // Config to pass along to Chart.js.
+      config: {
+        type:    Object,
+        default: {},
       }
     },
 
-    computed: {
-      dimensions() {
-        return {
-          height: this.height || 400,
-          width:  this.width  || 600,
-        }
-      },
 
-      /**
-       * Get the chart's type by looking at the tag.
-       *
-       * @author Curtis Blackwell
-       * @return {string}
-       */
-      chartType() {
-        // Split the tag into an array and remove the first and last elements (`hex` and `chart`).
-        var tag = this.$options.name.split('-');
-        tag.splice(0, 1);
-        tag.splice(tag.length - 1, 1)
 
-        // Use Vue's `| capitalize` on each remaining element.
-        for (var i = 0; i < tag.length; i++) {
-          tag[i] = this.$options.filters.capitalize(tag[i]);
-        }
-
-        return tag.join('');
-      },
-    },
 
     methods: {
       /**
-       * Render the chart.
+       * Add data to the chart.
        *
        * @author Curtis Blackwell
-       * @return {void}
+       * @param  {String} label
+       * @param  {Array}  data
        */
-      render() {
-        const chart = new Chart(
-          this.$els.canvas.getContext('2d')
-        )[this.chartType](this.chartData);
+      addData(label, data) {
+        this.chart.data.labels.push(label);
+        data.forEach((datum, i) => this.chart.data.datasets[i].data.push(datum));
 
-        this.legend = this.getLegend(chart);
+        this.chart.update();
       },
 
+
       /**
-       * Get the chart's legend.
-       *
-       * Render the legend separately so child components can override the logic when necessary.
+       * Remove data from the chart.
        *
        * @author Curtis Blackwell
-       * @param  {object} chart Chart.js chart.
-       * @return {object}       Chart.js legend.
+       * @param  {Number} index Index of data to remove.
        */
-      getLegend(chart) {
-        return this.chartData.datasets[0].label ? chart.generateLegend() : false;
+      removeData(index) {
+        this.chart.data.labels = this.chart.data.labels.filter((label, i) => {
+          return i != index;
+        });
+
+        this.chart.data.datasets.forEach((dataset) => {
+          dataset.data = dataset.data.filter((datum, i) => {
+            return i != index;
+          });
+        });
+
+        this.chart.update();
       }
     },
-  });
+
+
+
+
+    data() {
+      return {
+        // Chart object. Use this to access the API.
+        chart: {},
+      };
+    },
+
+
+
+
+    mounted() {
+      this.chart = new Chart(this.$el.querySelector('canvas').getContext('2d'), this.config);
+    },
+  };
 </script>
