@@ -20,7 +20,7 @@
       // Config to pass along to Chart.js.
       config: {
         type:    Object,
-        default: {},
+        default: () => {},
       }
     },
 
